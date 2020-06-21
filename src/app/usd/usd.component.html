@@ -5,7 +5,7 @@
         <h3>US Dollar</h3>
       </header>
       <div class="content">
-        <textarea id="usd" placeholder="Enter value in USD"></textarea>
+        <textarea id="usd" placeholder="Enter value in USD" [(ngModel)]="input" (input)="onUsdInput()" ></textarea>
       </div>
     </article>
   </div>

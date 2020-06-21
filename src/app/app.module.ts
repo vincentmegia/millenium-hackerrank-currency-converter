@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { YenComponent } from './yen/yen.component';
 import { USDComponent } from './usd/usd.component';
+import {DataService} from './app.sersvice';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { USDComponent } from './usd/usd.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

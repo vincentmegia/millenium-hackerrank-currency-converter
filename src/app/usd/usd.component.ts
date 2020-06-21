@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
+import {YenComponent} from '../yen/yen.component';
+import {DataService} from '../app.sersvice';
 
 @Component({
   selector: 'app-usd',
@@ -6,12 +8,21 @@ import { Component, Input } from '@angular/core';
 })
 export class USDComponent {
   yenDisplayText: number;
-  constructor() { }
+  usdToYen = 113;
+  input: number;
+
+  constructor(private dataService: DataService) { }
+
+  onUsdInput() {
+    console.log(this.input);
+    this.dataService.publish(this.input);
+  }
 
   convertToYen(newUsd) {
+    this.yenDisplayText = newUsd * this.usdToYen;
   }
 
   getYenDisplayText() {
-    return 0;
+    return this.yenDisplayText;
   }
 }
