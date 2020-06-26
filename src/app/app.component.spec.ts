@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { USDComponent } from './usd/usd.component';
 import { YenComponent } from './yen/yen.component';
 import { FormsModule } from '@angular/forms';
+import {DataService} from './app.sersvice';
 
 
 describe('AppComponent', () => {
@@ -14,9 +15,8 @@ describe('AppComponent', () => {
         USDComponent,
         YenComponent
       ],
-      imports: [
-        FormsModule
-      ]
+      imports: [FormsModule],
+      providers: [DataService]
     }).compileComponents();
   }));
 

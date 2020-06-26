@@ -1,16 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class DataService {
-  $values: Observable<number>;
+  $yenToUsdObservable: Subject<any>;
+  $usdToYenObservable: Subject<any>;
 
   constructor() {
-    this.$values = new Observable<number>();
-  }
-  publish(value)  {
-    this.$values = new Observable<number>(subscriber => {
-      subscriber.next(value);
-    });
+    this.$yenToUsdObservable = new Subject<any>();
+    this.$usdToYenObservable = new Subject<any>();
   }
 }

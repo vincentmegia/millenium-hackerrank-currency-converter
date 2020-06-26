@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angu
 import { FormsModule } from '@angular/forms';
 import { USDComponent } from './usd.component';
 import { By } from '@angular/platform-browser';
+import {DataService} from '../app.sersvice';
 
 
 describe('CiphertextComponent', () => {
@@ -15,12 +16,14 @@ describe('CiphertextComponent', () => {
       declarations: [
         USDComponent
       ],
-      imports: [FormsModule]
+      imports: [FormsModule],
+      providers: [DataService]
     }).compileComponents();
   }));
 
 
   it('should convert USD to Yen', async(() => {
+    debugger;
     let fixture = TestBed.createComponent(USDComponent);
     fixture.detectChanges();
     let ct = fixture.componentInstance;

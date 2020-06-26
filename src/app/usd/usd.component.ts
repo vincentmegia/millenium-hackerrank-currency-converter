@@ -8,18 +8,21 @@ import {DataService} from '../app.sersvice';
 })
 export class USDComponent {
   yenDisplayText: number;
-  usdToYen = 113;
-  input: number;
 
-  constructor(private dataService: DataService) { }
-
-  onUsdInput() {
-    console.log(this.input);
-    this.dataService.publish(this.input);
+  constructor(private dataService: DataService) {
+    //for listening values from yen to be converted to usd
+    this.dataService.$yenToUsdObservable.subscribe(value => {
+      this.yenDisplayText = value;
+    });
   }
 
-  convertToYen(newUsd) {
-    this.yenDisplayText = newUsd * this.usdToYen;
+  convertToYen(value) {
+    //this.yenDisplayText = value * 0.0088;
+    this.yenDisplayText = value * 113;
+  }
+
+  onUsdInput($event: any) {
+    this.dataService.$usdToYenObservable.next(this.yenDisplayText  * 113);
   }
 
   getYenDisplayText() {

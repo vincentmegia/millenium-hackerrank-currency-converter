@@ -7,21 +7,28 @@ import {DataService} from '../app.sersvice';
 })
 export class YenComponent implements OnInit {
   usdDisplayText: number;
-  yenToUsd: number = 0.0088;
-  constructor(private dataService: DataService) { }
+  input: any;
 
-  convertToUsd(newYen) {
+  constructor(private dataService: DataService) {
   }
 
+  convertToUsd(value) {
+    //return this.usdDisplayText = value * 113;
+    return this.usdDisplayText = value * 0.0088;
+  }
   getUsdDisplayText() {
-      return 0;
+      return this.usdDisplayText;
+  }
+
+  onYenInput($event: any) {
+    this.dataService.$yenToUsdObservable.next(this.usdDisplayText * 0.0088);
   }
 
   ngOnInit(): void {
-    debugger;
-    this.dataService.$values.pipe(x => {
-      debugger;
-      this.usdDisplayText = x * this.yenToUsd;
+    //for receiving usd values
+    this.dataService.$usdToYenObservable.subscribe(value => {
+      //this.convertToUsd(value);
+      this.usdDisplayText = value;
     });
   }
 }

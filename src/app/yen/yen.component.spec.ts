@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed, inject, fakeAsync } from '@angular/co
 import { FormsModule } from '@angular/forms';
 import { YenComponent } from './yen.component';
 import { By } from '@angular/platform-browser';
+import {DataService} from '../app.sersvice';
 
 describe('PlaintextComponent', () => {
 
@@ -10,7 +11,8 @@ describe('PlaintextComponent', () => {
       declarations: [
         YenComponent
       ],
-      imports: [FormsModule]
+      imports: [FormsModule],
+      providers: [DataService]
     }).compileComponents();
   }));
 
@@ -19,6 +21,7 @@ describe('PlaintextComponent', () => {
     fixture.detectChanges();
     let u = fixture.componentInstance;
     let a = Math.random();
+    console.log(a);
     u.convertToUsd(a);
     expect(u.usdDisplayText).toEqual(a * 0.0088);
   }));
