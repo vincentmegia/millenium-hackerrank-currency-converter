@@ -1,8 +1,8 @@
 <div style="display: flex">
   <div>
-      <td><app-yen></app-yen></td>
+      <td><app-yen (yenEventEmitter)="handleYenEvent($event)"></app-yen></td>
   </div>
   <div>
-    <td><app-usd></app-usd></td>
+    <td><app-usd (usdEventEmitter)="handleUsdEvent($event)"></app-usd></td>
   </div>
 </div>

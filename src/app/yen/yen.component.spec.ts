@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed, inject, fakeAsync } from '@angular/co
 import { FormsModule } from '@angular/forms';
 import { YenComponent } from './yen.component';
 import { By } from '@angular/platform-browser';
-import {DataService} from '../app.sersvice';
 
 describe('PlaintextComponent', () => {
 
@@ -11,8 +10,7 @@ describe('PlaintextComponent', () => {
       declarations: [
         YenComponent
       ],
-      imports: [FormsModule],
-      providers: [DataService]
+      imports: [FormsModule]
     }).compileComponents();
   }));
 

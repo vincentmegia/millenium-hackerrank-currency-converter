@@ -1,34 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {DataService} from '../app.sersvice';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-yen',
   templateUrl: './yen.component.html'
 })
-export class YenComponent implements OnInit {
-  usdDisplayText: number;
-  input: any;
+export class YenComponent {
+    usdDisplayText: number;
+    @Output() yenEventEmitter = new EventEmitter();
 
-  constructor(private dataService: DataService) {
-  }
+    convertToUsd(value) {
+        return this.usdDisplayText = value * 0.0088;
+    }
 
-  convertToUsd(value) {
-    //return this.usdDisplayText = value * 113;
-    return this.usdDisplayText = value * 0.0088;
-  }
-  getUsdDisplayText() {
+    getUsdDisplayText() {
       return this.usdDisplayText;
-  }
+    }
 
-  onYenInput($event: any) {
-    this.dataService.$yenToUsdObservable.next(this.usdDisplayText * 0.0088);
-  }
-
-  ngOnInit(): void {
-    //for receiving usd values
-    this.dataService.$usdToYenObservable.subscribe(value => {
-      //this.convertToUsd(value);
-      this.usdDisplayText = value;
-    });
-  }
+    onYenInput($event: any) {
+      this.yenEventEmitter.emit(this.usdDisplayText * 0.0088);
+    }
 }

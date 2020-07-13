@@ -2,8 +2,6 @@ import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angu
 import { FormsModule } from '@angular/forms';
 import { USDComponent } from './usd.component';
 import { By } from '@angular/platform-browser';
-import {DataService} from '../app.sersvice';
-
 
 describe('CiphertextComponent', () => {
 
@@ -17,7 +15,6 @@ describe('CiphertextComponent', () => {
         USDComponent
       ],
       imports: [FormsModule],
-      providers: [DataService]
     }).compileComponents();
   }));
 
